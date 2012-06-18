@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="utf8">
-  <title>Chat</title>
-</head>
+<?php ob_start() ?>
 
+<h1>Lobby</h1>
 
-<body>
-  <h1>Lobby</h1>
-
-  <?php for ($i = 0; $i < 3; $i++) : ?>
+<?php for ($i = 0; $i < 3; $i++) : ?>
   <div id="room_<?php echo $i ?>">
     <span class="room_no"><?php echo sprintf("%03d", $i) ?></span>
     <span class="room_entrance">
@@ -17,8 +10,9 @@
     </span>
     <span class="room_name">部屋名<?php echo $i ?></span>
   </div>
-  <?php endfor; ?>
+<?php endfor; ?>
 
-</body>
-
-</html>
+<?php
+  $_content = ob_get_clean();
+  include 'layout.php';
+?>
