@@ -1,5 +1,3 @@
-<?php ob_start() ?>
-
 <h1>Lobby</h1>
 
 <?php for ($i = 0; $i < 3; $i++) : ?>
@@ -11,8 +9,3 @@
     <span class="room_name">部屋名<?php echo $i ?></span>
   </div>
 <?php endfor; ?>
-
-<?php
-  $_content = ob_get_clean();
-  include 'layout.php';
-?>
