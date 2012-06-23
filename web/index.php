@@ -1,7 +1,7 @@
 <?php
 
 // リクエストURIの取得
-$request_uri = $_SERVER['REQUEST_URI'];
+$request_uri = rtrim($_SERVER['REQUEST_URI'], '/');
 
 
 // ルーティングの設定を取得
