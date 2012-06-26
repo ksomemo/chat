@@ -1,5 +1,6 @@
 <?php
 require '../core/application.php';
+require '../core/Router.php';
 
 // アプリケーションのインスタンスを作成
 $app = new Application();
@@ -10,14 +11,14 @@ $request_uri = rtrim($_SERVER['REQUEST_URI'], '/');
 
 
 // ルーティングの設定を取得
-$route = $app->getRoutes();
+$router = new Router($app->getRoutes());
 
 
 // URIと設定をマッチングさせる
-// ルーティングに対応するファイルを読み込む
-if (isset($route[$request_uri])) {
+if ($router->isExists($request_uri)) {
+    // ルーティングに対応するファイルを読み込む
     ob_start();
-    require '../views/' . $route[$request_uri];
+    require '../views/' . $router->getRoute($request_uri);
     $_content = ob_get_clean();
 
     include '../views/layout.php';
