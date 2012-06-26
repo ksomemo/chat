@@ -1,5 +1,5 @@
 <?php
-require '../core/application.php';
+require '../core/Application.php';
 require '../core/Router.php';
 
 // アプリケーションのインスタンスを作成
