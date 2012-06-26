@@ -1,13 +1,16 @@
 <?php
+require '../core/application.php';
+
+// アプリケーションのインスタンスを作成
+$app = new Application();
+
 
 // リクエストURIの取得
 $request_uri = rtrim($_SERVER['REQUEST_URI'], '/');
 
 
 // ルーティングの設定を取得
-$route = array(
-    '/chat/lobby' => 'lobby.php'
-);
+$route = $app->getRoutes();
 
 
 // URIと設定をマッチングさせる
