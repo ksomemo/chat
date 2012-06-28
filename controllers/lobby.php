@@ -1,3 +1,7 @@
 <?php
-
-$room_count = 5;
+function lobbyAction()
+{
+    return array(
+       'room_count' => 5
+    );
+}
