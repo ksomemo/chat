@@ -20,13 +20,14 @@ $router = new Router($app->getRoutes());
 // URIと設定をマッチングさせる
 if ($router->isExists($request_uri)) {
     // ルーティングに対応するファイルを読み込む
-    require '../controllers/'. $router->getRoute($request_uri) . '.php';
-    $action_function_name = $router->getRoute($request_uri) . 'Action';
+    $route = $router->getRoute($request_uri);
+    require '../controllers/'. $route['action'] . '.php';
+    $action_function_name = $route['action'] . 'Action';
     $_view_variables = $action_function_name();
 
     // 処理結果を表示する
     $view = new View();
-    echo $view->render($router->getRoute($request_uri), $_view_variables);
+    echo $view->render($route['action'], $_view_variables);
 
 } else {
     echo 'not found';

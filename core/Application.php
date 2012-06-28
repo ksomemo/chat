@@ -13,7 +13,10 @@ class Application
     function getRoutes()
     {
         return array(
-            '/chat/lobby' => 'lobby'
+            '/chat/lobby' => array(
+              'controller' => 'chat',
+              'action'     => 'lobby',
+            ),
         );
     }
 }
