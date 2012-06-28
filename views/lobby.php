@@ -1,6 +1,6 @@
 <h1>Lobby</h1>
-
-<?php for ($i = 0; $i < 3; $i++) : ?>
+<?php $room_count = 3; ?>
+<?php for ($i = 0; $i < $room_count; $i++) : ?>
   <div id="room_<?php echo $i ?>">
     <span class="room_no"><?php echo sprintf("%03d", $i) ?></span>
     <span class="room_entrance">
