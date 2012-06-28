@@ -20,7 +20,8 @@ $router = new Router($app->getRoutes());
 if ($router->isExists($request_uri)) {
     // ルーティングに対応するファイルを読み込む
     ob_start();
-    require '../views/' . $router->getRoute($request_uri) . '.php';
+    require '../controllers/'. $router->getRoute($request_uri) . '.php';
+    require '../views/'      . $router->getRoute($request_uri) . '.php';
     $_content = ob_get_clean();
 
     include '../views/layout.php';
