@@ -1,13 +1,15 @@
 <?php
 require '../core/Application.php';
 require '../core/Router.php';
+require '../core/Request.php';
 
 // アプリケーションのインスタンスを作成
 $app = new Application();
 
 
 // リクエストURIの取得
-$request_uri = rtrim($_SERVER['REQUEST_URI'], '/');
+$request = new Request();
+$request_uri = rtrim($request->getRequestUri(), '/');
 
 
 // ルーティングの設定を取得
