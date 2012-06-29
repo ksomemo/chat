@@ -21,9 +21,12 @@ $router = new Router($app->getRoutes());
 if ($router->isExists($request_uri)) {
     // ルーティングに対応するファイルを読み込む
     $route = $router->getRoute($request_uri);
-    require '../controllers/'. $route['action'] . '.php';
-    $action_function_name = $route['action'] . 'Action';
-    $_view_variables = $action_function_name();
+
+    $controller_name = ucfirst($route['controller']) . 'Controller';
+    require '../controllers/'. $controller_name . '.php';
+    $controller = new $controller_name();
+    $action_name = $route['action'] . 'Action';
+    $_view_variables = $controller->$action_name();
 
     // 処理結果を表示する
     $view = new View();
