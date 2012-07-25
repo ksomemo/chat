@@ -30,7 +30,7 @@ if ($router->isExists($request_uri)) {
 
     // 処理結果を表示する
     $view = new View();
-    echo $view->render($route['action'], $_view_variables);
+    echo $view->render($route['controller'].'/'.$route['action'], $_view_variables);
 
 } else {
     echo 'not found';
