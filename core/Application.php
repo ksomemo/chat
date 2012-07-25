@@ -14,8 +14,12 @@ class Application
     {
         return array(
             '/chat/lobby' => array(
-              'controller' => 'chat',
-              'action'     => 'lobby',
+                'controller' => 'chat',
+                'action'     => 'lobby',
+            ),
+            '/chat/entrance' => array(
+                    'controller' => 'chat',
+                    'action'     => 'entrance',
             ),
         );
     }
