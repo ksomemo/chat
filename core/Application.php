@@ -18,8 +18,12 @@ class Application
                 'action'     => 'lobby',
             ),
             '/chat/entrance' => array(
-                    'controller' => 'chat',
-                    'action'     => 'entrance',
+                'controller' => 'chat',
+                'action'     => 'entrance',
+            ),
+            '/chat/entrance/:entrance_id' => array(
+                'controller' => 'chat',
+                'action'     => 'entrance',
             ),
         );
     }
