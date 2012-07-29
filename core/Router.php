@@ -13,17 +13,38 @@ class Router
      */
     function __construct($routes)
     {
-        $this->routes = $routes;
+        $this->routes = $this->makeRoute($routes);
     }
 
     /**
-     * URIに対応するルーティングの存在を確かめる
      *
-     * @param String $uri
+     * ルーティング定義からルーティングルールを作成する
+     *
+     * @param array $definition ルーティング定義
+     *
+     * @return array
      */
-    function isExists($uri)
+    function makeRoute($definition)
     {
-        return isset($this->routes[$uri]);
+        $routes = array();
+
+        foreach ($definition as $uri => $params) {
+            $tokens = explode('/', $uri);
+            foreach ($tokens as $key => $token) {
+                // 可変パラメータの後方参照な正規表現の作成
+                if (0 === strpos($token, ':')) {
+                    $name = substr($token, 1);
+                    $token = sprintf('(?P<%s>[^/]+)', $name);
+                }
+
+                $tokens[$key] = $token;
+            }
+
+            $pattern = implode('/', $tokens);
+            $routes[$pattern] = $params;
+        }
+
+        return $routes;
     }
 
     /**
@@ -33,7 +54,13 @@ class Router
      */
     function getRoute($uri)
     {
-        return $this->routes[$uri];
+        foreach ($this->routes as $uri_pattern => $route) {
+            if (preg_match('#' . $uri_pattern . '#', $uri, $matches)) {
+                return array_merge($route, $matches);
+            }
+        }
+
+        return false;
     }
 
 }
