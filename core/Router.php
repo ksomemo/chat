@@ -16,15 +16,6 @@ class Router
         $this->routes = $routes;
     }
 
-    /**
-     * URIに対応するルーティングの存在を確かめる
-     *
-     * @param String $uri
-     */
-    function isExists($uri)
-    {
-        return isset($this->routes[$uri]);
-    }
 
     /**
      * URIに対応するルーティングを取得する

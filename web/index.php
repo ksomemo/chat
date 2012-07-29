@@ -16,12 +16,10 @@ $request_uri = rtrim($request->getRequestUri(), '/');
 // ルーティングの設定を取得
 $router = new Router($app->getRoutes());
 
+$route = $router->getRoute($request_uri);
 
 // URIと設定をマッチングさせる
-if ($router->isExists($request_uri)) {
-    // ルーティングに対応するファイルを読み込む
-    $route = $router->getRoute($request_uri);
-
+if ($route) {
     $controller_name = ucfirst($route['controller']) . 'Controller';
     require '../controllers/'. $controller_name . '.php';
     $controller = new $controller_name();
