@@ -14,12 +14,16 @@ class ChatController
     }
 
     /**
-     * 部屋入り口
+     *  部屋入り口
      *
-     * @return array view用変数
+     * @param array $params
+     *
+     * @return multitype:
      */
-    function entranceAction()
+    function entranceAction($params)
     {
-        return array();
+        return array(
+            'entrance_id' => $params['entrance_id'],
+        );
     }
 }

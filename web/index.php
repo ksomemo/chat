@@ -24,7 +24,7 @@ if ($route) {
     require '../controllers/'. $controller_name . '.php';
     $controller = new $controller_name();
     $action_name = $route['action'] . 'Action';
-    $_view_variables = $controller->$action_name();
+    $_view_variables = $controller->$action_name($route);
 
     // 処理結果を表示する
     $view = new View();
