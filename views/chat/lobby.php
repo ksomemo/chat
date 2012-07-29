@@ -9,3 +9,5 @@
     <span class="room_name">部屋名<?php echo $room_no ?></span>
   </div>
 <?php endfor; ?>
+
+<p><a href="/chat/helpTop">チャットに関するヘルプについて</a></p>

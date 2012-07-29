@@ -21,6 +21,10 @@ class Application
                 'controller' => 'chat',
                 'action'     => 'entrance',
             ),
+            '/chat/helpTop' => array(
+                'controller' => 'chat',
+                'action'     => 'helpTop',
+            ),
         );
     }
 }
