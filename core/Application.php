@@ -17,10 +17,6 @@ class Application
                 'controller' => 'chat',
                 'action'     => 'lobby',
             ),
-            '/chat/entrance' => array(
-                'controller' => 'chat',
-                'action'     => 'entrance',
-            ),
             '/chat/entrance/:entrance_id' => array(
                 'controller' => 'chat',
                 'action'     => 'entrance',
