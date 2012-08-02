@@ -35,35 +35,25 @@ class ChatController
      */
     public function helpTopAction()
     {
-        return array(
-            'help_category_list' => array(
-                array(
-                    'id'   => 1,
-                    'name' => 'name1',
-                    'help' => array(
-                        array(
-                            'title' => 'title1',
-                        ),
-                        array(
-                            'title' => 'title1-2',
-                        ),
-                        array(
-                            'title' => 'title1-3',
-                        ),                    ),
-                ),
-                array(
-                    'id'   => 2,
-                    'name' => 'name2',
-                    'help' => array(
-                        array(
-                            'title' => 'title2',
-                        ),
-                        array(
-                            'title' => 'title2-2',
-                        ),
-                    )
-                ),
-            ),
+        $pdo = new PDO(
+            'mysql:host=localhost;dbname=chat_database;characterset=utf8',
+            'chat_user',
+            'chat_pass'
         );
+
+        $sql = 'select id, name from help_category_m order by priority';
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        $category_list = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($category_list as $key => $category) {
+            $sql = 'select title from help_m where category_id = ? order by priority';
+            $statement = $pdo->prepare($sql);
+            $statement->execute(array($category['id']));
+            $category_list[$key]['help'] = $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return array('help_category_list' => $category_list);
+
     }
 }
