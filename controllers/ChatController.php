@@ -27,7 +27,6 @@ class ChatController
         );
     }
 
-
     /**
      * ヘルプTOPページ
      *
@@ -56,6 +55,8 @@ class ChatController
             $statement->execute(array($category['id']));
             $category_list[$key]['help'] = $statement->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        unset( $pdo);
 
         return array('help_category_list' => $category_list);
 
