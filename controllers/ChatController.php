@@ -35,11 +35,15 @@ class ChatController
      */
     public function helpTopAction()
     {
-        $pdo = new PDO(
+        require '../core/DBManager.php';
+
+        $db_manager = new DBManager(
             'mysql:host=localhost;dbname=chat_database;characterset=utf8',
             'chat_user',
             'chat_pass'
         );
+
+        $pdo = $db_manager->getConnection();
 
         $sql = 'select id, name from help_category_m order by priority';
         $statement = $pdo->prepare($sql);
