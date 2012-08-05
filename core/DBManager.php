@@ -7,31 +7,34 @@
 class DBManager {
 
     /**
-     * PDOインスタンス
+     * PDOインスタンスを保持する配列
      *
-     * @var PDO
+     * @var array
      */
-    private $connection;
+    private $connections;
 
     /**
      * PDOを作成する
      *
+     * @param string $key 接続を特定するキー
      * @param string $dsn
      * @param string $username
      * @param string $passwd
      */
-    public function __construct($dsn, $username, $passwd)
+    public function __construct($key, $dsn, $username, $passwd)
     {
-        $this->connection = new PDO($dsn, $username, $passwd);
+        $this->connections[$key] = new PDO($dsn, $username, $passwd);
     }
 
     /**
      * 接続を取得する
      *
+     * @param string $key 接続を特定するキー
+     *
      * @return PDO
      */
-    public function getConnection()
+    public function getConnection($key)
     {
-        return $this->connection;
+        return $this->connections[$key];
     }
 }
