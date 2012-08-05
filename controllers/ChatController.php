@@ -37,17 +37,8 @@ class ChatController extends Controller
      */
     public function helpTopAction()
     {
-        require '../core/DBManager.php';
-
         $db_key = 'default';
-        $db_manager = new DBManager(
-            $db_key,
-            'mysql:host=localhost;dbname=chat_database;characterset=utf8',
-            'chat_user',
-            'chat_pass'
-        );
-
-        $pdo = $db_manager->getConnection($db_key);
+        $pdo = $this->db_manager->getConnection($db_key);
 
         $sql = 'select id, name from help_category_m order by priority';
         $statement = $pdo->prepare($sql);
