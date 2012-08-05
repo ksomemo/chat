@@ -1,5 +1,8 @@
 <?php
-class ChatController
+
+require '../core/Controller.php';
+
+class ChatController extends Controller
 {
     /**
      * ロビー
