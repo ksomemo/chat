@@ -37,8 +37,7 @@ class ChatController extends Controller
      */
     public function helpTopAction()
     {
-        $db_key = 'default';
-        $pdo = $this->db_manager->getConnection($db_key);
+        $pdo = $this->db_manager->getConnection();
 
         $sql = 'select id, name from help_category_m order by priority';
         $statement = $pdo->prepare($sql);

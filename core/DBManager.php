@@ -33,8 +33,12 @@ class DBManager {
      *
      * @return PDO
      */
-    public function getConnection($key)
+    public function getConnection($key = null)
     {
+        if ($key === null) {
+            return current($this->connections);
+        }
+
         return $this->connections[$key];
     }
 }
