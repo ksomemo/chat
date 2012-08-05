@@ -27,4 +27,19 @@ class Application
             ),
         );
     }
+
+    /**
+     * DB接続設定を取得する
+     *
+     * @param array DB接続設定
+     */
+    public function getDbConnectionSetting()
+    {
+        return array(
+            'key'      => 'default',
+            'dsn'      => 'mysql:host=localhost;dbname=chat_database;characterset=utf8',
+            'username' => 'chat_user',
+            'passwd'   => 'chat_pass'
+        );
+    }
 }

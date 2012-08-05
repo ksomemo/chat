@@ -24,12 +24,12 @@ if ($route) {
     $controller_name = ucfirst($route['controller']) . 'Controller';
     require '../controllers/'. $controller_name . '.php';
 
-    $db_key = 'default';
+    $db_con_setting = $app->getDbConnectionSetting();
     $db_manager = new DBManager(
-        $db_key,
-        'mysql:host=localhost;dbname=chat_database;characterset=utf8',
-        'chat_user',
-        'chat_pass'
+        $db_con_setting['key'],
+        $db_con_setting['dsn'],
+        $db_con_setting['username'],
+        $db_con_setting['passwd']
     );
 
     $controller = new $controller_name($db_manager);
