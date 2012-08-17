@@ -37,19 +37,13 @@ class ChatController extends Controller
      */
     public function helpTopAction()
     {
-        $pdo = $this->db_manager->getConnection();
-
         $helpCategoryRepository = $this->db_manager->getRepository('HelpCategory');
         $category_list = $helpCategoryRepository->findAll();
 
+        $helpRepository = $this->db_manager->getRepository('Help');
         foreach ($category_list as $key => $category) {
-            $sql = 'select title from help where category_id = ? order by priority';
-            $statement = $pdo->prepare($sql);
-            $statement->execute(array($category['id']));
-            $category_list[$key]['help'] = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $category_list[$key]['help'] = $helpRepository->findByCategory($category['id']);
         }
-
-        unset( $pdo);
 
         return array('help_category_list' => $category_list);
 
