@@ -1,22 +1,7 @@
 <?php
 
-class HelpCategoryRepository
+class HelpCategoryRepository extends Repository
 {
-    /**
-     * @var PDO
-     */
-    private $pdo;
-
-    /**
-     * コンストラクタ
-     *
-     * @param PDO $pdo
-     */
-    public function __construct(PDO $pdo)
-    {
-        $this->pdo = $pdo;
-    }
-
     /**
      * ヘルプカテゴリ
      *
