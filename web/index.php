@@ -41,5 +41,6 @@ if ($route) {
     echo $view->render($route['controller'].'/'.$route['action'], $_view_variables);
 
 } else {
+    header('http/1.1 404 Not Found');
     echo 'not found';
 }
