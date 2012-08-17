@@ -41,4 +41,20 @@ class DBManager {
 
         return $this->connections[$key];
     }
+
+    /**
+     * 指定されたリポジトリの取得する
+     *
+     * @param String $repository_name
+     *
+     * @param Repository $repository_name
+     */
+    public function getRepository($repository_name)
+    {
+        $class_name = $repository_name.'Repository';
+
+        require_once '../models/repository/'.$class_name.'.php';
+
+        return new $class_name(self::getConnection());
+    }
 }

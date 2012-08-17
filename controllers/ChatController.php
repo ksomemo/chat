@@ -39,10 +39,8 @@ class ChatController extends Controller
     {
         $pdo = $this->db_manager->getConnection();
 
-        $sql = 'select id, name from help_category order by priority';
-        $statement = $pdo->prepare($sql);
-        $statement->execute();
-        $category_list = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $helpCategoryRepository = $this->db_manager->getRepository('HelpCategory');
+        $category_list = $helpCategoryRepository->findAll();
 
         foreach ($category_list as $key => $category) {
             $sql = 'select title from help where category_id = ? order by priority';
