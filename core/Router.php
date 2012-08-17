@@ -55,7 +55,7 @@ class Router
     function getRoute($uri)
     {
         foreach ($this->routes as $uri_pattern => $route) {
-            if (preg_match('#' . $uri_pattern . '#', $uri, $matches)) {
+            if (preg_match('#^' . $uri_pattern . '$#', $uri, $matches)) {
                 return array_merge($route, $matches);
             }
         }
