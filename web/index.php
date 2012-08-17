@@ -3,6 +3,7 @@ require '../core/Application.php';
 require '../core/Router.php';
 require '../core/Request.php';
 require '../core/View.php';
+require '../core/DBManager.php';
 
 // アプリケーションのインスタンスを作成
 $app = new Application();
@@ -22,7 +23,16 @@ $route = $router->getRoute($request_uri);
 if ($route) {
     $controller_name = ucfirst($route['controller']) . 'Controller';
     require '../controllers/'. $controller_name . '.php';
-    $controller = new $controller_name();
+
+    $db_con_setting = $app->getDbConnectionSetting();
+    $db_manager = new DBManager(
+        $db_con_setting['key'],
+        $db_con_setting['dsn'],
+        $db_con_setting['username'],
+        $db_con_setting['passwd']
+    );
+
+    $controller = new $controller_name($db_manager);
     $action_name = $route['action'] . 'Action';
     $_view_variables = $controller->$action_name($route);
 
