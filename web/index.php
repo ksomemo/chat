@@ -20,6 +20,7 @@ $router = new Router($app->getRoutes());
 
 $route = $router->getRoute($request_uri);
 
+$response = new Response();
 // URIと設定をマッチングさせる
 if ($route) {
     $controller_name = ucfirst($route['controller']) . 'Controller';
@@ -42,6 +43,6 @@ if ($route) {
     echo $view->render($route['controller'].'/'.$route['action'], $_view_variables);
 
 } else {
-    header('http/1.1 404 Not Found');
+    $response->setHttpStatus('404', 'Not Found');
     echo 'not found';
 }
