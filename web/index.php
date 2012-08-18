@@ -44,8 +44,8 @@ if ($route) {
 
 } else {
     $response->setHttpStatus(404);
-    $response->sendHeader();
     $contents = 'not found';
 }
 
+$response->sendHeader();
 $response->send($contents);

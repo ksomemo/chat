@@ -9,6 +9,7 @@ class Response
      * @var array
      */
     public static $status_texts = array(
+        200 => 'OK',
         404 => 'Not Found',
     );
 
@@ -17,6 +18,15 @@ class Response
      * @var int
      */
     private $status_code;
+
+    /**
+     *
+     * @param int $status_code
+     */
+    public function __construct($status_code = 200)
+    {
+        $this->status_code = $status_code;
+    }
 
     /**
      * httpステータスを設定する
