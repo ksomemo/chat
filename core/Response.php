@@ -20,6 +20,12 @@ class Response
     private $status_code;
 
     /**
+     * 送信内容
+     * @var String
+     */
+    private $contents;
+
+    /**
      *
      * @param int $status_code
      */
@@ -51,9 +57,19 @@ class Response
      *
      * @param String $contents
      */
-    public function send($contents)
+    public function send()
     {
         $this->sendHeader();
-        echo $contents;
+        echo $this->contents;
+    }
+
+    /**
+     * 送信する内容を設定する
+     *
+     * @param String $contents
+     */
+    public function setContents($contents)
+    {
+        $this->contents = $contents;
     }
 }

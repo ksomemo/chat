@@ -17,10 +17,10 @@ $request_uri = rtrim($request->getRequestUri(), '/');
 
 // ルーティングの設定を取得
 $router = new Router($app->getRoutes());
-
 $route = $router->getRoute($request_uri);
 
 $response = new Response();
+
 // URIと設定をマッチングさせる
 if ($route) {
     $controller_name = ucfirst($route['controller']) . 'Controller';
@@ -47,4 +47,5 @@ if ($route) {
     $contents = 'not found';
 }
 
-$response->send($contents);
+$response->setContents($contents);
+$response->send();
