@@ -26,6 +26,13 @@ class Response
     public function setHttpStatus($status_code)
     {
         $this->status_code = $status_code;
+    }
+
+    /**
+     * headerを送信する
+     */
+    public function sendHeader()
+    {
         header(sprintf('http/1.1 %s %s', $this->status_code, self::$status_texts[$this->status_code]));
     }
 }

@@ -44,5 +44,6 @@ if ($route) {
 
 } else {
     $response->setHttpStatus(404);
+    $response->sendHeader();
     echo 'not found';
 }
