@@ -1,0 +1,7 @@
+<?php
+/**
+ * Response
+ */
+class Response
+{
+}
