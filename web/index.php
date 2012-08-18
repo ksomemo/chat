@@ -47,5 +47,4 @@ if ($route) {
     $contents = 'not found';
 }
 
-$response->sendHeader();
 $response->send($contents);

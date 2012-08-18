@@ -53,6 +53,7 @@ class Response
      */
     public function send($contents)
     {
+        $this->sendHeader();
         echo $contents;
     }
 }
