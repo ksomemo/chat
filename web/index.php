@@ -40,10 +40,12 @@ if ($route) {
 
     // 処理結果を表示する
     $view = new View();
-    echo $view->render($route['controller'].'/'.$route['action'], $_view_variables);
+    $contents = $view->render($route['controller'].'/'.$route['action'], $_view_variables);
 
 } else {
     $response->setHttpStatus(404);
     $response->sendHeader();
-    echo 'not found';
+    $contents = 'not found';
 }
+
+$response->send($contents);

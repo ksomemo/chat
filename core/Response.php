@@ -35,4 +35,14 @@ class Response
     {
         header(sprintf('http/1.1 %s %s', $this->status_code, self::$status_texts[$this->status_code]));
     }
+
+    /**
+     * レスポンスを送信する
+     *
+     * @param String $contents
+     */
+    public function send($contents)
+    {
+        echo $contents;
+    }
 }
