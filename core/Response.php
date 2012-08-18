@@ -16,9 +16,8 @@ class Response
      * httpステータスを設定する
      *
      * @param String $status
-     * @param String $text
      */
-    public function setHttpStatus($status, $text) {
-        header(sprintf('http/1.1 %s %S', $status, self::$status_texts[$status]));
+    public function setHttpStatus($status) {
+        header(sprintf('http/1.1 %s %s', $status, self::$status_texts[$status]));
     }
 }

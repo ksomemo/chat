@@ -43,6 +43,6 @@ if ($route) {
     echo $view->render($route['controller'].'/'.$route['action'], $_view_variables);
 
 } else {
-    $response->setHttpStatus('404', 'Not Found');
+    $response->setHttpStatus(404);
     echo 'not found';
 }
