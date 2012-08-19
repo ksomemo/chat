@@ -4,6 +4,7 @@ require '../core/Router.php';
 require '../core/Request.php';
 require '../core/View.php';
 require '../core/DBManager.php';
+require '../core/Response.php';
 
 // アプリケーションのインスタンスを作成
 $app = new Application();
@@ -16,8 +17,9 @@ $request_uri = rtrim($request->getRequestUri(), '/');
 
 // ルーティングの設定を取得
 $router = new Router($app->getRoutes());
-
 $route = $router->getRoute($request_uri);
+
+$response = new Response();
 
 // URIと設定をマッチングさせる
 if ($route) {
@@ -38,8 +40,12 @@ if ($route) {
 
     // 処理結果を表示する
     $view = new View();
-    echo $view->render($route['controller'].'/'.$route['action'], $_view_variables);
+    $contents = $view->render($route['controller'].'/'.$route['action'], $_view_variables);
 
 } else {
-    echo 'not found';
+    $response->setHttpStatus(404);
+    $contents = 'not found';
 }
+
+$response->setContents($contents);
+$response->send();
