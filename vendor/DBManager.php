@@ -1,5 +1,5 @@
 <?php
-require_once '../core/model/Repository.php';
+require_once '../vendor/model/Repository.php';
 
 /**
  * DB管理クラス

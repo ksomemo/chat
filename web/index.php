@@ -1,10 +1,10 @@
 <?php
-require '../core/Application.php';
-require '../core/Router.php';
-require '../core/Request.php';
-require '../core/View.php';
-require '../core/DBManager.php';
-require '../core/Response.php';
+require '../vendor/Application.php';
+require '../vendor/Router.php';
+require '../vendor/Request.php';
+require '../vendor/View.php';
+require '../vendor/DBManager.php';
+require '../vendor/Response.php';
 
 // アプリケーションのインスタンスを作成
 $app = new Application();
