@@ -1,3 +1,5 @@
 <?php
+require '../vendor/ClassLoader.php';
 
-spl_autoload_register(function($class){}, true, false);
+$loader = new ClassLoader();
+spl_autoload_register(array($loader, 'loadClass'), true, false);
