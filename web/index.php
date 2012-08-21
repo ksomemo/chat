@@ -1,4 +1,5 @@
 <?php
+require '../app/bootstrap.php';
 require '../vendor/Application.php';
 require '../vendor/Router.php';
 require '../vendor/Request.php';
