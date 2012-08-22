@@ -10,7 +10,7 @@ class ClassLoader
      */
     public function loadClass($class)
     {
-        ;
+        require __DIR__.'./Application.php';
     }
 
     /**
