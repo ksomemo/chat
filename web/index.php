@@ -1,12 +1,6 @@
 <?php
 require '../app/bootstrap.php';
 
-require '../vendor/KsOre/Router.php';
-require '../vendor/KsOre/Request.php';
-require '../vendor/KsOre/View.php';
-require '../vendor/KsOre/DBManager.php';
-require '../vendor/KsOre/Response.php';
-
 // アプリケーションのインスタンスを作成
 $app = new Application();
 
