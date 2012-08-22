@@ -1,5 +1,5 @@
 <?php
-require '../vendor/ClassLoader.php';
+require '../vendor/KsOre/ClassLoader.php';
 
 $loader = new ClassLoader();
 $loader->register();

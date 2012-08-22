@@ -1,6 +1,6 @@
 <?php
 
-require '../vendor/Controller.php';
+require '../vendor/KsOre/Controller.php';
 
 class ChatController extends Controller
 {

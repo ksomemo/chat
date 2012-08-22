@@ -1,11 +1,11 @@
 <?php
 require '../app/bootstrap.php';
-require '../vendor/Application.php';
-require '../vendor/Router.php';
-require '../vendor/Request.php';
-require '../vendor/View.php';
-require '../vendor/DBManager.php';
-require '../vendor/Response.php';
+require '../vendor/KsOre/Application.php';
+require '../vendor/KsOre/Router.php';
+require '../vendor/KsOre/Request.php';
+require '../vendor/KsOre/View.php';
+require '../vendor/KsOre/DBManager.php';
+require '../vendor/KsOre/Response.php';
 
 // アプリケーションのインスタンスを作成
 $app = new Application();
