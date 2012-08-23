@@ -37,8 +37,13 @@ class ClassLoader
         $pos = strrpos($class, '\\');
 
         if ($pos !== false) {
+            $namespace = substr($class, 0, $pos);
+
+            $dir_path = str_replace('KsOre\\', '', $namespace);
+
             $class_name = substr($class, $pos + 1, strlen($class));
-            $class = 'model/'. $class_name;
+
+            $class = $dir_path . '/'. $class_name;
         }
 
         return __DIR__.'./'.$class.'.php';;
