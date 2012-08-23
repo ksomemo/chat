@@ -10,6 +10,11 @@ class ClassLoader
      */
     public function loadClass($class)
     {
+        $pos = strrpos($class, '\\');
+        if ($pos !== false) {
+            $class = 'model/'. substr($class, $pos + 1, strlen($class));
+        }
+
         require __DIR__.'./'.$class.'.php';
     }
 

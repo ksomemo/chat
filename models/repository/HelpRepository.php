@@ -1,4 +1,5 @@
 <?php
+use KsOre\model\Repository;
 
 class HelpRepository extends Repository
 {
