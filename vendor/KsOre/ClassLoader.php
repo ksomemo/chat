@@ -10,12 +10,11 @@ class ClassLoader
      */
     public function loadClass($class)
     {
-        $pos = strrpos($class, '\\');
-        if ($pos !== false) {
-            $class = 'model/'. substr($class, $pos + 1, strlen($class));
-        }
+        $file = $this->findFile($class);
 
-        require __DIR__.'./'.$class.'.php';
+        if ($file) {
+            require $file;
+        }
     }
 
     /**
@@ -24,5 +23,23 @@ class ClassLoader
     public function register()
     {
         spl_autoload_register(array($this, 'loadClass'), true, false);
+    }
+
+    /**
+     *
+     * クラス名に応じたファイルを見つける
+     *
+     * @param string $class
+     *
+     * @return string
+     */
+    public function findFile($class) {
+        $pos = strrpos($class, '\\');
+
+        if ($pos !== false) {
+            $class = 'model/'. substr($class, $pos + 1, strlen($class));
+        }
+
+        return __DIR__.'./'.$class.'.php';;
     }
 }
