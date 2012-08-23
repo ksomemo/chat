@@ -37,7 +37,8 @@ class ClassLoader
         $pos = strrpos($class, '\\');
 
         if ($pos !== false) {
-            $class = 'model/'. substr($class, $pos + 1, strlen($class));
+            $class_name = substr($class, $pos + 1, strlen($class));
+            $class = 'model/'. $class_name;
         }
 
         return __DIR__.'./'.$class.'.php';;
