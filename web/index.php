@@ -1,6 +1,8 @@
 <?php
 require '../app/bootstrap.php';
 
+use KsOre\Routing\Router;
+
 // アプリケーションのインスタンスを作成
 $app = new Application();
 

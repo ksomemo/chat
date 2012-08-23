@@ -33,7 +33,8 @@ class ClassLoader
      *
      * @return string
      */
-    public function findFile($class) {
+    public function findFile($class)
+    {
         $pos = strrpos($class, '\\');
 
         if ($pos !== false) {
