@@ -40,13 +40,20 @@ class ClassLoader
         if ($pos !== false) {
             $namespace = substr($class, 0, $pos);
 
-            $dir_path = str_replace('KsOre\\', '', $namespace);
+            $register_pos = strpos($namespace, 'KsOre');
+            if ($register_pos !== 0) {
+                return;
+            }
+
+            $base_dir = __DIR__. '/../../vendor';
+
+            $dir_path = $base_dir . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $namespace);
 
             $class_name = substr($class, $pos + 1, strlen($class));
 
-            $class = $dir_path . '/'. $class_name;
+            return $dir_path . DIRECTORY_SEPARATOR. $class_name.'.php';
         }
 
-        return __DIR__.'./'.$class.'.php';;
+        return __DIR__.'./'.$class.'.php';
     }
 }
