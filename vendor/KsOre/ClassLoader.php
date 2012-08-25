@@ -50,19 +50,20 @@ class ClassLoader
         if ($pos !== false) {
             $namespace = substr($class, 0, $pos);
 
-            $register_pos = strpos($namespace, 'KsOre');
-            if ($register_pos !== 0) {
-                return;
+            $namespaces = array('KsOre' => __DIR__. '/../../vendor');
+            foreach ($namespaces as $ns => $base_dir) {
+                $register_pos = strpos($namespace, $ns);
+                if ($register_pos !== 0) {
+                    continue;
+                }
+
+                $dir_path = $base_dir . DIRECTORY_SEPARATOR
+                          . str_replace($this->namespace_separator, DIRECTORY_SEPARATOR, $namespace);
+
+                $class_name = substr($class, $pos + 1, strlen($class));
+
+                return $dir_path . DIRECTORY_SEPARATOR. $class_name. $this->file_extension;
             }
-
-            $base_dir = __DIR__. '/../../vendor';
-
-            $dir_path = $base_dir . DIRECTORY_SEPARATOR
-                      . str_replace($this->namespace_separator, DIRECTORY_SEPARATOR, $namespace);
-
-            $class_name = substr($class, $pos + 1, strlen($class));
-
-            return $dir_path . DIRECTORY_SEPARATOR. $class_name. $this->file_extension;
         }
 
         return __DIR__.'./'.$class. $this->file_extension;
