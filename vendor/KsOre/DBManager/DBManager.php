@@ -1,4 +1,6 @@
 <?php
+namespace KsOre\DBManager;
+
 /**
  * DB管理クラス
  *
@@ -22,7 +24,7 @@ class DBManager {
      */
     public function __construct($key, $dsn, $username, $passwd)
     {
-        $this->connections[$key] = new PDO($dsn, $username, $passwd);
+        $this->connections[$key] = new \PDO($dsn, $username, $passwd);
     }
 
     /**

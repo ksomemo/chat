@@ -1,8 +1,11 @@
 <?php
+namespace KsOre\Controller;
 
+/**
+ * Controller
+ */
 class Controller
 {
-
     /**
      *
      * @var DBManager

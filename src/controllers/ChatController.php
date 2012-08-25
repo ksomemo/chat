@@ -1,4 +1,7 @@
 <?php
+
+use KsOre\Controller\Controller;
+
 /**
  * チャット
  */

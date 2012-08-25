@@ -1,7 +1,12 @@
 <?php
 require '../app/bootstrap.php';
 
+use KsOre\Application\Application;
+use KsOre\Request\Request;
 use KsOre\Routing\Router;
+use KsOre\Response\Response;
+use KsOre\DBManager\DBManager;
+use KsOre\View\View;
 
 // アプリケーションのインスタンスを作成
 $app = new Application();

@@ -1,5 +1,5 @@
 <?php
-
+namespace KsOre\Application;
 /**
  * Application
  */

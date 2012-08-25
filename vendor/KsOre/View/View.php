@@ -1,4 +1,6 @@
 <?php
+namespace KsOre\View;
+
 /**
  * View
  */

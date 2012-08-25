@@ -69,8 +69,6 @@ class ClassLoader
                 return $dir_path . DIRECTORY_SEPARATOR. $class_name. $this->file_extension;
             }
         }
-
-        return __DIR__.'./'.$class. $this->file_extension;
     }
 
     /**
