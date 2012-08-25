@@ -1,7 +1,7 @@
 <?php
-
-require '../vendor/KsOre/Controller.php';
-
+/**
+ * チャット
+ */
 class ChatController extends Controller
 {
     /**
