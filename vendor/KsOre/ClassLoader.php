@@ -14,6 +14,11 @@ class ClassLoader
     private $namespace_separator = '\\';
 
     /**
+     * @var array
+     */
+    private $namespaces = array();
+
+    /**
      * オートロード用メソッド
      *
      * @param String $class
@@ -50,8 +55,7 @@ class ClassLoader
         if ($pos !== false) {
             $namespace = substr($class, 0, $pos);
 
-            $namespaces = array('KsOre' => __DIR__. '/../../vendor');
-            foreach ($namespaces as $ns => $base_dir) {
+            foreach ($this->namespaces as $ns => $base_dir) {
                 $register_pos = strpos($namespace, $ns);
                 if ($register_pos !== 0) {
                     continue;
@@ -67,5 +71,16 @@ class ClassLoader
         }
 
         return __DIR__.'./'.$class. $this->file_extension;
+    }
+
+    /**
+     * オートロードするクラスの名前空間とディレクトリの対応を登録する
+     *
+     * @param string $namespace
+     * @param string $dir
+     */
+    public function registerNameSpace($namespace, $dir)
+    {
+        $this->namespaces = array($namespace => $dir);
     }
 }
