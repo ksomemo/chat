@@ -1,4 +1,6 @@
 <?php
+namespace KsOre\Request;
+
 /**
  * Request
  */

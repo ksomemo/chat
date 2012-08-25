@@ -1,10 +1,19 @@
 <?php
 
+use KsOre\Application\Application;
+
 /**
  * Application
  */
-class Application
+class ProjectApplication extends Application
 {
+    /**
+     * コンストラクタ
+     */
+    public function __construct()
+    {
+        $this->project_dir = __DIR__.'/..';
+    }
 
     /**
      *
@@ -42,4 +51,5 @@ class Application
             'passwd'   => 'chat_pass'
         );
     }
+
 }

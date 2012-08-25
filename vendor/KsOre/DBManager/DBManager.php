@@ -1,5 +1,5 @@
 <?php
-require_once '../vendor/model/Repository.php';
+namespace KsOre\DBManager;
 
 /**
  * DB管理クラス
@@ -24,7 +24,7 @@ class DBManager {
      */
     public function __construct($key, $dsn, $username, $passwd)
     {
-        $this->connections[$key] = new PDO($dsn, $username, $passwd);
+        $this->connections[$key] = new \PDO($dsn, $username, $passwd);
     }
 
     /**
@@ -54,7 +54,7 @@ class DBManager {
     {
         $class_name = $repository_name.'Repository';
 
-        require_once '../models/repository/'.$class_name.'.php';
+        require_once '../src/models/repository/'.$class_name.'.php';
 
         return new $class_name(self::getConnection());
     }

@@ -1,7 +1,10 @@
 <?php
 
-require '../vendor/Controller.php';
+use KsOre\Controller\Controller;
 
+/**
+ * チャット
+ */
 class ChatController extends Controller
 {
     /**
