@@ -19,11 +19,11 @@ class View
         extract($_variables);
 
         ob_start();
-        require '../views/' . $_path . '.php';
+        require '../src/views/' . $_path . '.php';
         $_content = ob_get_clean();
 
         ob_start();
-        include '../views/layout.php';
+        include '../src/views/layout.php';
         $_all_contents = ob_get_clean();
 
         return $_all_contents;
