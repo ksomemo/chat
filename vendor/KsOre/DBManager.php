@@ -52,7 +52,7 @@ class DBManager {
     {
         $class_name = $repository_name.'Repository';
 
-        require_once '../models/repository/'.$class_name.'.php';
+        require_once '../src/models/repository/'.$class_name.'.php';
 
         return new $class_name(self::getConnection());
     }

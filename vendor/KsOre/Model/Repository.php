@@ -1,5 +1,5 @@
 <?php
-namespace KsOre\model;
+namespace KsOre\Model;
 
 class Repository
 {
