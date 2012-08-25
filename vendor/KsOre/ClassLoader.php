@@ -4,6 +4,16 @@ namespace KsOre\ClassLoader;
 class ClassLoader
 {
     /**
+     * @var string
+     */
+    private $file_extension = '.php';
+
+    /**
+     * @var string
+     */
+    private $namespace_separator = '\\';
+
+    /**
      * オートロード用メソッド
      *
      * @param String $class
@@ -35,7 +45,7 @@ class ClassLoader
      */
     public function findFile($class)
     {
-        $pos = strrpos($class, '\\');
+        $pos = strrpos($class, $this->namespace_separator);
 
         if ($pos !== false) {
             $namespace = substr($class, 0, $pos);
@@ -47,13 +57,14 @@ class ClassLoader
 
             $base_dir = __DIR__. '/../../vendor';
 
-            $dir_path = $base_dir . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $namespace);
+            $dir_path = $base_dir . DIRECTORY_SEPARATOR
+                      . str_replace($this->namespace_separator, DIRECTORY_SEPARATOR, $namespace);
 
             $class_name = substr($class, $pos + 1, strlen($class));
 
-            return $dir_path . DIRECTORY_SEPARATOR. $class_name.'.php';
+            return $dir_path . DIRECTORY_SEPARATOR. $class_name. $this->file_extension;
         }
 
-        return __DIR__.'./'.$class.'.php';
+        return __DIR__.'./'.$class. $this->file_extension;
     }
 }
