@@ -21,7 +21,7 @@ $response = new Response();
 // URIと設定をマッチングさせる
 if ($route) {
     $controller_name = ucfirst($route['controller']) . 'Controller';
-    require '../controllers/'. $controller_name . '.php';
+    require '../src/controllers/'. $controller_name . '.php';
 
     $db_con_setting = $app->getDbConnectionSetting();
     $db_manager = new DBManager(
