@@ -64,7 +64,7 @@ class ClassLoader
                 $dir_path = $base_dir . DIRECTORY_SEPARATOR
                           . str_replace($this->namespace_separator, DIRECTORY_SEPARATOR, $namespace);
 
-                $class_name = substr($class, $pos + 1, strlen($class));
+                $class_name = substr($class, $pos + 1);
 
                 return $dir_path . DIRECTORY_SEPARATOR. $class_name. $this->file_extension;
             }
