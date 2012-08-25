@@ -10,45 +10,25 @@ use KsOre\View\View;
 /**
  * Application
  */
-class Application
+abstract class Application
 {
+    /**
+     * @var string
+     */
+    protected  $project_dir;
 
     /**
      *
      * @return array ルーティングの設定
      */
-    function getRoutes()
-    {
-        return array(
-            '/chat/lobby' => array(
-                'controller' => 'chat',
-                'action'     => 'lobby',
-            ),
-            '/chat/entrance/:entrance_id' => array(
-                'controller' => 'chat',
-                'action'     => 'entrance',
-            ),
-            '/chat/helpTop' => array(
-                'controller' => 'chat',
-                'action'     => 'helpTop',
-            ),
-        );
-    }
+    abstract function getRoutes();
 
     /**
      * DB接続設定を取得する
      *
      * @param array DB接続設定
      */
-    public function getDbConnectionSetting()
-    {
-        return array(
-            'key'      => 'default',
-            'dsn'      => 'mysql:host=localhost;dbname=chat_database;characterset=utf8',
-            'username' => 'chat_user',
-            'passwd'   => 'chat_pass'
-        );
-    }
+    abstract public function getDbConnectionSetting();
 
     public function run()
     {
@@ -66,7 +46,7 @@ class Application
         // URIと設定をマッチングさせる
         if ($route) {
             $controller_name = ucfirst($route['controller']) . 'Controller';
-            require __DIR__.'/../../../src/controllers/'. $controller_name . '.php';
+            require $this->project_dir.'/src/controllers/'. $controller_name . '.php';
 
             $db_con_setting = $this->getDbConnectionSetting();
             $db_manager = new DBManager(
