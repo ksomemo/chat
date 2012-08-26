@@ -34,6 +34,9 @@ class ProjectApplication extends Application
                 'controller' => 'chat',
                 'action'     => 'helpTop',
             ),
+            '/:controller/:action' => array(
+                // nothing
+            ),
         );
     }
 
