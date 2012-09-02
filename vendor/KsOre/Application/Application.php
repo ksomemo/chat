@@ -56,7 +56,7 @@ abstract class Application
                     $db_con_setting['passwd']
             );
 
-            $controller = new $controller_name($db_manager);
+            $controller = new $controller_name($db_manager, $request);
             $action_name = $route['action'] . 'Action';
             $_view_variables = $controller->$action_name($route);
 

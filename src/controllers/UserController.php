@@ -1,7 +1,4 @@
 <?php
-
-use KsOre\Request\Request;
-
 use KsOre\Controller\Controller;
 
 /**
@@ -25,8 +22,7 @@ class UserController extends Controller
             'agreement' => '',
         );
 
-        $request = new Request();
-        if ($request->getRequestMethod() == 'POST') {
+        if ($this->request->getRequestMethod() == 'POST') {
             $input = array(
                 'name'      => isset($_POST['name'])      ? $_POST['name'] :      '',
                 'mail'      => isset($_POST['mail'])      ? $_POST['mail'] :      '',
