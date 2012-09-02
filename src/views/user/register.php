@@ -17,28 +17,28 @@
 
     <div>
         <label>性別</label>
-        <input type="radio" name="sex" id="sex_1" value="1" <?php if ($input['sex'] == 1) echo 'checked' ?>>
-        <label for="sex_1">男</label>
-        <input type="radio" name="sex" id="sex_2" value="2" <?php if ($input['sex'] == 2) echo 'checked' ?>>
-        <label for="sex_2">女</label>
+        <?php foreach ($sex_list as $key => $name) : ?>
+            <input type="radio" name="sex" id="sex_<?php echo $key ?>" value="<?php echo $key ?>" <?php if ($input['sex'] == $key) echo 'checked' ?>>
+            <label for="sex_<?php echo $key ?>"><?php echo $name ?></label>
+        <?php endforeach ?>
     </div>
 
     <div>
         <label>生年月日</label>
         <select name="year">
-            <option value="1980" <?php if ($input['year'] == 1980) echo 'selected' ?>>1980</option>
-            <option value="1990" <?php if ($input['year'] == 1990) echo 'selected' ?>>1990</option>
-            <option value="2000" <?php if ($input['year'] == 2000) echo 'selected' ?>>2000</option>
+            <?php foreach ($year_list as $year) : ?>
+                <option value="<?php echo $year ?>" <?php if ($input['year'] == $year) echo 'selected' ?>><?php echo $year ?></option>
+            <?php endforeach ?>
         </select>
         <select name="month">
-            <option value="1"  <?php if ($input['month'] == 1)  echo 'selected' ?>>1</option>
-            <option value="6"  <?php if ($input['month'] == 6)  echo 'selected' ?>>6</option>
-            <option value="12" <?php if ($input['month'] == 12) echo 'selected' ?>>12</option>
+            <?php foreach ($month_list as $month) : ?>
+                <option value="<?php echo $month ?>" <?php if ($input['month'] == $month) echo 'selected' ?>><?php echo $month ?></option>
+            <?php endforeach ?>
         </select>
         <select name="day">
-            <option value="1"  <?php if ($input['day'] == 1)  echo 'selected' ?>>1</option>
-            <option value="15" <?php if ($input['day'] == 15) echo 'selected' ?>>15</option>
-            <option value="30" <?php if ($input['day'] == 30) echo 'selected' ?>>30</option>
+            <?php foreach ($day_list as $day) : ?>
+                <option value="<?php echo $day ?>" <?php if ($input['day'] == $day) echo 'selected' ?>><?php echo $day ?></option>
+            <?php endforeach ?>
         </select>
     </div>
 
