@@ -22,16 +22,16 @@ class UserController extends Controller
             'agreement' => '',
         );
 
-        if ($this->request->getRequestMethod() == 'POST') {
+        if ($this->request->isPost()) {
             $input = array(
-                'name'      => isset($_POST['name'])      ? $_POST['name'] :      '',
-                'mail'      => isset($_POST['mail'])      ? $_POST['mail'] :      '',
-                'password'  => isset($_POST['password'])  ? $_POST['password'] :  '',
-                'sex'       => isset($_POST['sex'])       ? $_POST['sex'] :       '',
-                'year'      => isset($_POST['year'])      ? $_POST['year'] :      '',
-                'month'     => isset($_POST['month'])     ? $_POST['month'] :     '',
-                'day'       => isset($_POST['day'])       ? $_POST['day'] :       '',
-                'agreement' => isset($_POST['agreement']) ? $_POST['agreement'] : '',
+                'name'      => $this->request->getPost('name',      ''),
+                'mail'      => $this->request->getPost('mail',      ''),
+                'password'  => $this->request->getPost('password',  ''),
+                'sex'       => $this->request->getPost('sex',       ''),
+                'year'      => $this->request->getPost('year',      ''),
+                'month'     => $this->request->getPost('month',     ''),
+                'day'       => $this->request->getPost('day',       ''),
+                'agreement' => $this->request->getPost('agreement', ''),
             );
         }
 
