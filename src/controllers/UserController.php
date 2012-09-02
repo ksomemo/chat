@@ -23,18 +23,10 @@ class UserController extends Controller
         );
 
         if ($this->request->isPost()) {
-            $input = array(
-                'name'      => $this->request->getPost('name',      ''),
-                'mail'      => $this->request->getPost('mail',      ''),
-                'password'  => $this->request->getPost('password',  ''),
-                'sex'       => $this->request->getPost('sex',       ''),
-                'year'      => $this->request->getPost('year',      ''),
-                'month'     => $this->request->getPost('month',     ''),
-                'day'       => $this->request->getPost('day',       ''),
-                'agreement' => $this->request->getPost('agreement', ''),
-            );
+            foreach ($input as $name => $default) {
+                $input[$name] = $this->request->getPost($name, $default);
+            }
         }
-
 
         return array('input' => $input);
     }
